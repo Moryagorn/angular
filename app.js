@@ -7,6 +7,9 @@
 
   app.controller('TabController', function(){
     this.tab = 1;
+    this.bibi = 'baba';
+      
+      
     this.setTab = function(tab){
     						this.tab = tab ;
     };
