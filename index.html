@@ -15,21 +15,24 @@
         {{product.name}}
         <em class="pull-right">{{product.price | currency}}</em>
       </h3>
-      <section ng-show="product.images.length">
-        <img ng-src="{{product.images[0]}}" />
-        <ul class="list-inline thumbs">
-          <li class="thumbnail" ng-repeat="image in product.images">
+
+      <!-- Image Gallery  -->
+      <div class='gallery' ng-show="product.images.length" ng-controller="GalleryController as gallery" >
+        <div class="img-wrap">
+            <img ng-src="{{product.images[gallery.current]}}" />
+        </div>div>
+        <ul class="img-thumbnail clearfix">
+          <li class="small-image pull-left thumbnail" ng-repeat="image in product.images">
             <img ng-src="{{image}}" />
           </li>
         </ul>
-      </section>
+      </div>
 
-      <section class="tab" ng-controller="TabController as tabCtrl" >
+      <section class="tab" ng-controller="TabController as tabCtrl">
         <div> Tabulation active : {{ tabCtrl.tab }} </div>
         <div> tabCtrl.isSet(1) : {{ tabCtrl.isSet(1) }} </div>
         <div> tabCtrl.isSet(2) : {{ tabCtrl.isSet(2) }} </div>
         <div> tabCtrl.isSet(3) : {{ tabCtrl.isSet(3) }} </div>
-
         <ul class="nav nav-pills">
           <li ng-class="{ active: tabCtrl.isSet(1) }">
             <a href ng-click="tabCtrl.setTab(1)">Description</a></li>
@@ -38,7 +41,7 @@
           <li ng-class="{ active: tabCtrl.isSet(3) }">
             <a href ng-click="tabCtrl.setTab(3)">Reviews</a></li>
         </ul>
-        <div ng-show="tabCtrl.isSet(1)"> 
+        <div ng-show="tabCtrl.isSet(1)">
           <h4>Description</h4>
           <blockquote>{{product.description}}</blockquote>
         </div>
@@ -48,7 +51,6 @@
         </div>
         <div ng-show="tabCtrl.isSet(3)">
           <h4>Reviews</h4>
-          <blockquote></blockquote>
         </div>
       </section>
     </div>
