@@ -41,6 +41,8 @@
           <li ng-class="{ active: tabCtrl.isSet(3) }">
             <a href ng-click="tabCtrl.setTab(3)">Reviews</a></li>
         </ul>
+        
+        
         <div ng-show="tabCtrl.isSet(1)">
           <h4>Description</h4>
           <blockquote>{{product.description}}</blockquote>
@@ -58,6 +60,32 @@
                   <cite class="clearfix">—{{review.author}}</cite>
                 </blockquote>
            </li>
+           
+                       <form name="reviewForm">
+              <!--  Live Preview -->
+              <blockquote>
+                <strong> Stars</strong>
+                
+                <cite class="clearfix">—</cite>
+              </blockquote>
+
+              <!--  Review Form -->
+              <h4>Submit a Review</h4>
+              <fieldset class="form-group">
+                <select ng-model="review.stars" class="form-control" ng-options="stars for stars in [5,4,3,2,1]"  title="Stars">
+                  <option value="">Rate the Product</option>
+                </select>
+              </fieldset>
+              <fieldset class="form-group">
+                <textarea ng-model="review.body" class="form-control" placeholder="Write a short review of the product..." title="Review"></textarea>
+              </fieldset>
+              <fieldset class="form-group">
+                <input ng-model="review.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" />
+              </fieldset>
+              <fieldset class="form-group">
+                <input type="submit" class="btn btn-primary pull-right" value="Submit Review" />
+              </fieldset>
+            </form>
         </div>
       </section>
     </div>
