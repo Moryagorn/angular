@@ -19,7 +19,7 @@
           </div>
           <ul class="img-thumbnails clearfix">
             <li class="small-image pull-left thumbnail" ng-repeat="image in product.images">
-              <img ng-src="{{image}}" />
+              <img ng-src="{{image}}" ng-click="gallery.setCurrent($index)"/>
             </li>
           </ul>
         </div>
@@ -79,7 +79,7 @@
                 <input ng-model="reviewCtrl.review.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required />
               </fieldset>
               <fieldset class="form-group">
-                <input type="submit" class="btn btn-primary pull-right" value="Submit Review" />
+                <input ng-show=reviewForm.$valid type="submit" class="btn btn-primary pull-right" value="Submit Review" />
               </fieldset>
             </form>
 
